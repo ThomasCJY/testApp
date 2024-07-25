@@ -27,6 +27,7 @@ rules_jvm_external_setup()
 
 load("@rules_jvm_external//:defs.bzl", "maven_install")
 
+# bazelisk run @unpinned_maven//:pin
 maven_install(
     artifacts = [
         "com.google.android.exoplayer:exoplayer-core:2.17.1",
@@ -37,6 +38,7 @@ maven_install(
         "androidx.test:core:1.2.0",
         "androidx.test:rules:1.2.0",
         "androidx.test.ext:junit:1.1.1",
+        "androidx.constraintlayout:constraintlayout:2.1.3",
     ],
     repositories = [
         "https://maven.google.com",

@@ -1,10 +1,5 @@
 load("@rules_kotlin//kotlin:android.bzl", "kt_android_library")
 
-cc_library(
-    name = "test_so",
-    srcs = ["main/jniLibs/armeabi-v7a/libclang_rt.ubsan_standalone-aarch64-android.so"],
-)
-
 android_library(
     name = "app-lib",
     srcs = [
@@ -13,8 +8,7 @@ android_library(
     manifest = "main/AndroidManifest.xml",
     resource_files = glob(["main/res/**"]),
     deps = [
-        "@maven//:com_google_android_exoplayer_exoplayer_core",
-        ":test_so", # This dependency should not be included in test apk
+        "@maven//:androidx_constraintlayout_constraintlayout",
     ]
 )
 
@@ -23,7 +17,7 @@ android_binary(
     manifest = "main/AndroidManifest.xml",
     manifest_values = {
         "minSdkVersion": "21",
-        "targetSdkVersion": "31",
+        "targetSdkVersion": "34",
     },
     deps = [
         ":app-lib",
@@ -53,7 +47,7 @@ android_binary(
     manifest = "androidTest/AndroidManifest.xml",
     manifest_values = {
         "minSdkVersion": "21",
-        "targetSdkVersion": "31",
+        "targetSdkVersion": "34",
     },
     deps = [
         ":test-lib",
