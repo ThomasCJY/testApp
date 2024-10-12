@@ -1,3 +1,4 @@
 build --experimental_output_paths=strip
 build --worker_sandboxing
+build --noworker_multiplex
 build --spawn_strategy=worker,sandboxed
